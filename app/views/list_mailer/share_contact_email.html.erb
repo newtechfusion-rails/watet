@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h3>Contact us form: <% @url %></h3>
+    <div class="clear"></div>
+	<p>
+          <b>Email sent by: <%= @url %></b> </p>
+        <div class="clear"></div>
+  <b>Email sent from: <%=@email%></b>.
+       <div class="clear"></div>
+             <b> body of message: </b>
+            <div class="clear"></div>
+            <%= @message %>
+            <%= @subject %>
+    
+  </body>
+</html>

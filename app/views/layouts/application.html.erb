@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Watet</title>
+  <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+  <%= javascript_include_tag :defaults %>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div id="wrapper">
+	<div id="header">
+    	<div class="group">
+
+            	<a href=""> <h1 class="logo-sales logo_bus"></h1></a>
+
+            <div class="header_info">
+                <!--<p class="activity friends"><a href="#" class="icons">Invite Friends</a></p>
+                <p class="activity mobapp"><a href="#" class="icons">Mobile App</a></p>-->
+                <!-- <span id="signup">Sign up</span>-->
+                <!--<p class="login"><a href="#" class="icons" id="login">Login</a></p>-->
+                <div class="activity loggedinfo">
+
+
+                </div>
+
+           </div>
+        </div>
+    </div><!-- header ends-->
+<div class="add-deal group">
+<%= yield %>
+   </div>
+    <div id="footer">
+    	<div class="content group">
+        	<!--<div class="social group">
+            	<span class="icons fb">
+                	<a href="#"></a>
+                </span>
+                <span class="icons tw">
+                	<a href="#"></a>
+                </span>
+            </div>-->
+            <div class="footerlist group">
+                <ul class="group bus">
+                <!--    <li><a href="#">About Us</a></li>-->
+                    <li><a href="#"><%= t :Contact%> watet.com</a></li>
+                    <li class="last"><%= link_to 'contect us', {:action => 'contact_us', :controller => "products"} %></li>
+                    <li><div id="fb-root"></div>
+<fb:like href="http://www.newtechfusion.com/" send="" width="100" layout="button_count" action="fb-like"></fb:like>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({appId: '131672133640955', status: true, cookie: true, xfbml: true});
+  };
+  (function() {
+    // delay to simulate slow loading of Facebook library - remove this setTimeout!!
+    var t = setTimeout(function() {
+        var e = document.createElement('script'); e.async = true;
+        e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
+        document.getElementById('fb-root').appendChild(e);
+        }, 3000);
+  }());
+
+</script></li>
+
+                </ul>
+                <p>&<%= t :copy %>2011-2012 watet.com. <%= t :All_rights_reserved %></p>
+            </div>
+        </div>
+    </div><!-- footer ends -->
+    </div>
+  <%= yield(:script) -%>
+<% unless flash[:notice].nil? and flash[:alert].nil? %>
+<script type="text/javascript"> $(document).ready(function(){ $("#messages").fadeOut(2000); }); </script>
+<% end %>
+</body>
+</html>

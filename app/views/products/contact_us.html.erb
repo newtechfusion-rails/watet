@@ -1,0 +1,50 @@
+<div class="adminsales">
+  <div id="add-deal-location" >
+    <div class="contactus">
+      <div align ="center"><h1>Contact Us</h1></div>
+      <%= form_for(@contact_us, :as =>:products, :url =>"/products/contact_us_user", :id => session[:user_id], :method =>"post") do |f| %>
+<div class ="clear"></div>
+<label><b>Name:</b></label>
+<div class="clear"></div>
+<%= f.text_field :name %>
+<div class="clear"></div>
+<label><b>Email:</b></label>
+<div class="clear"></div>
+<%= f.email_field :email %>
+<div class="clear"></div>
+<label><b>Subject:</b></label>
+<div class="clear"></div>
+<%= f.text_field :subject %>
+<div class="clear"></div>
+<label><b>Message:</b></label>
+<div class="clear"></div>
+<%= f.text_area :message %>
+<div class="clear"></div>
+<%= f.hidden_field :id, :value => session[:user_id]%>
+<div class= "actions">
+<%= f.submit "Send Message"%>
+</div>
+
+<%end%>
+    </div>
+
+
+
+<form action="transact.dll" method="POST" onSubmit="return validate(form);" name="form">
+<input type="checkbox" name="checkbox" id="checkbox" value="1">&nbsp;I hereby agree to all Terms and Conditions</a>
+	<input type="submit" value="Submit">
+      </form>
+    <script type="text/javascript">
+
+<!--
+function validate(frm) {
+        if (frm.checkbox.checked==false)
+    {
+        alert("Please agree to our Terms and Conditions.");
+        return false;
+    }
+}
+//-->
+    </script>>
+  </div>
+  </div>

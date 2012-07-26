@@ -1,0 +1,60 @@
+rs:
+
+  Email: E-mail
+  Show_Friend_List: Показать другу Список
+  Action: действие
+  No_more_disappointing_surprises: Нет больше разочаровывает сюрпризов
+  No_more_more_problems_with_what_to_buy_for_your_friends: Больше не больше проблем с тем, что купить для друзей
+  Keep_a_list_things_you_would_like_to_have_and_share_it_with_your_mates: Составьте список вещей, которые вы хотели бы иметь и поделиться им с товарищами
+  No_additional_registration_required: Никаких дополнительных регистрации
+  use_your_facebook_account: использовать facebook счет
+  Just: просто
+  login: вход
+  GREAT_TO_HAVE:  "Замечательно иметь"
+  Name:  "имя"
+  Description:  "описание"
+  Select_Wish_Date:  "Выберите Желание дате"
+  Upload_Images:  "Загрузить изображения"
+  Select_Location:  "Выберите место расположения"
+  Send_the_list_via_email:  "Отправить список по электронной почте"
+  Submit:  "представлять"
+  Send:  "отправлять"
+  Sign_out:  "Выйти"
+  User_Name: "имя пользователя"
+  Your_friends_wish_to_have:  "Ваши друзья хотели бы иметь"
+  Wish_Images:  "Желание изображения"
+  Wish_Complition_Date: "Желание Complition дате"
+  Actions: "Действия"
+  Edit: "редактировать"
+  Delete: "удалять"
+  User_Name: "имя пользователя"
+  Product_Name: "Наименование"
+  Your_Wish_Complition_Date: "Ваши пожелания Complition дате"
+  Location: "расположение"
+  Your_wish_Images: "Ваше желание изображения"
+  login: "выход"
+  Add_Images : Добавить изображения
+
+  errors: &errors
+    format: ! '%{attribute} %{message}'
+    messages:
+     Enter_your_wish: "Введите ваше желание"
+     Enter_description_about_your_wish: "Введите описание вашего желания"
+     Please_upload_image_of_your_wish : "Пожалуйста, загрузите изображение вашего желания"
+#  date:
+#    abbr_month_names:
+#      -январь
+#      -февраль
+#      -март
+#      -апрель
+#      -май
+#      -июнь
+#      -июль
+#      -август
+#      -сентябрь
+#      -октябрь
+#      -ноябрь
+#      -декабрь
+#
+
+  

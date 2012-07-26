@@ -1,0 +1,197 @@
+<script type="text/javascript">
+        $(document).ready(function() {
+          $('#addmore').bind('click', function() {
+
+                var num     = $('.clonedInput').length; // how many "duplicatable" input fields we currently have
+                var newNum  = new Number(num + 1);      // the numeric ID of the new input field being added
+
+
+
+                if(num>9)
+                return false;
+              var news='<div id="input'+newNum+'" class="clonedInput"><label>Meal Info</label> <input type="text" size="30" name="addMeals[meal_info][]" id="meal_info"><a onclick=remove_addmore("input'+newNum+'") href="javascript:void(0)">remove</a></div>';
+
+                // create the new element via clone(), and manipulate it's ID using newNum value
+               // var newElem = $('#input' + num).clone().attr('id', 'input' + newNum);
+
+                // manipulate the name/id values of the input inside the new element
+                //newElem.children(':first').attr('id', 'name' + newNum).attr('name', 'name' + newNum);
+
+                // insert the new element after the last "duplicatable" input field
+                $('#input' + num).after(news);
+
+                // enable the "remove" button
+                $('#close').attr('disabled','');
+
+                // business rule: you can only add 5 names
+                if (newNum == 10)
+                    $('#addmore').attr('disabled','disabled');
+
+                });
+
+            $('#btnDel').click(function() {
+                var num = $('.clonedInput').length; // how many "duplicatable" input fields we currently have
+                $('#input' + num).remove();     // remove the last element
+
+                // enable the "add" button
+                $('#addmore').attr('disabled','');
+
+                // if only one element remains, disable the "remove" button
+                if (num-1 == 1)
+                    $('#addmore').attr('disabled','disabled');
+            });
+
+            $('#addmore').attr('disabled','disabled');
+
+        });
+
+        function remove_addmore(id){
+
+         var num     = $('.clonedInput').length;
+         if(num>1){
+       $("#"+id).remove();
+
+        }
+        }
+
+    </script>
+
+
+
+<% @lat= @product_edit.lat || "50.534"  %>
+<% @lng= @product_edit.lng || "4.62622" %>
+
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript">
+var geocoder = new google.maps.Geocoder();
+
+function geocodePosition(pos) {
+  geocoder.geocode({
+    latLng: pos
+  }, function(responses) {
+    if (responses && responses.length > 0) {
+      updateMarkerAddress(responses[0].formatted_address);
+    } else {
+      updateMarkerAddress('Cannot determine address at this location.');
+    }
+  });
+}
+
+
+
+function updateMarkerStatus(str) {
+
+}
+
+function updateMarkerPosition(latLng) {
+
+  $("#product_lat").val(latLng.lat());
+  $("#product_lng").val(latLng.lng());
+
+
+}
+
+function updateMarkerAddress(str) {
+
+}
+
+function initialize() {
+  var latLng = new google.maps.LatLng(<%=@product_edit.lat%>, <%= @product_edit.lng%>);
+  var map = new google.maps.Map(document.getElementById('mapCanvas'), {
+    zoom: 8,
+    center: latLng,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  });
+  var marker = new google.maps.Marker({
+    position: latLng,
+    title: 'Point A',
+    map: map,
+    draggable: true
+  });
+
+  // Update current position info.
+  updateMarkerPosition(latLng);
+  geocodePosition(latLng);
+
+  // Add dragging event listeners.
+  google.maps.event.addListener(marker, 'dragstart', function() {
+    updateMarkerAddress('Dragging...');
+  });
+
+  google.maps.event.addListener(marker, 'drag', function() {
+    updateMarkerStatus('Dragging...');
+    updateMarkerPosition(marker.getPosition());
+  });
+
+  google.maps.event.addListener(marker, 'dragend', function() {
+    updateMarkerStatus('Drag ended');
+    geocodePosition(marker.getPosition());
+  });
+}
+
+// Onload handler to fire off the app.
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+<p style="text-align:right">
+	<%= current_user.name %>
+	<%= link_to "Sign out", :signout %>
+</p>
+  <div class="adminsales">
+    <div id="add-deal-location" >
+      <span class="bus_back"><%= link_to 'Back', :controller => 'users', :action => 'show', :id => current_user.id %></span>
+<%= form_for(@product_edit, :as =>:product, :url =>"/products/update",:id =>@product_edit.id,:method => "post") do |f| %>
+<%= f.hidden_field :user_id,:value=>session[:user_id] %>
+    <div class="field">
+      <label><%= t :Name%> </label><br />
+    <%= f.text_field :name %>
+  </div>
+     <%=  f.hidden_field :update, :value=>params[:id]  , :name=> "update"%>
+  <div class="field">
+    <label><%= t :Description%> </label><br />
+    <%= f.text_area :descripton %>
+  </div>
+   <div class="field">
+     <label><%= t :Select_Wish_Date%></label><br />
+ <%= f.date_select :wish_date, :order => [:day, :month, :year] %>
+     </div>
+      <div class="file">
+        <label><%= t :Add_Images%></label>
+         <div class="clear"></div>
+        
+ <%= image_tag  @product_edit.images, :size=> "100x100"%>
+         <%= link_to "x", {:action => 'delete_image', :controller => "users"} %>
+        
+          <%= image_tag  @product_edit.images1, :size=> "100x100"%>
+       <%= link_to "x", {:action => 'delete_image1', :controller => "users"} %>
+          <%= image_tag  @product_edit.images2, :size=> "100x100"%>
+          <%= link_to "x", {:action => 'delete_image2', :controller => "users"} %>
+          <%= image_tag  @product_edit.images3, :size=> "100x100"%>
+          <%= link_to "x", {:action => 'delete_image3', :controller => "users"} %>
+         </div>
+      <div class="clear"></div>
+        <div class="file"> <%=f.file_field :images %></div>
+         <div class="file"><%=f.file_field :images1 %></div>
+         <div class="file"><%=f.file_field :images2 %></div>
+         <div class="file"><%=f.file_field :images3 %></div>
+        
+      
+      
+      
+      
+      </div>
+<div class="field">
+    <label><%= t :Select_Location%></label>
+    <div class="clear"></div>
+   
+<div class="maps" id="mapCanvas"></div>
+ <%= f.hidden_field :lat, :value=>"" %>
+  <%= f.hidden_field :lng, :value=>"" %>
+</div>
+   <div class="clear"></div>
+  <div class="actions">
+    <%= f.submit "Re-submit" %>
+  </div>
+
+<%end%>
+    </div>
+  </div>

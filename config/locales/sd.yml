@@ -1,0 +1,64 @@
+sd:
+
+  Email: e-post
+  Show_Friend_List : Visa kompislista
+  Terms: termer
+  Privacy: integritet
+  All_rights_reserved: All rights reserved
+  copy : kopiera
+  login: inloggning
+  No_more_disappointing_surprises: Inga fler nedslående överraskningar
+  No_more_more_problems_with_what_to_buy_for_your_friends: Inget mer mer problem med vad jag ska köpa för dina vänner
+  Keep_a_list_things_you_would_like_to_have_and_share_it_with_your_mates: Föra ett register över saker du vill ha och dela den med dina kompisar
+  No_additional_registration_required: Ingen extra registrering krävs
+  use_your_facebook_account: använda ditt Facebook-konto
+  Just: bara
+  GREAT_TO_HAVE: "Bra att ha"
+  Name: "namn"
+  Description: "Beskrivning"
+  Select_Wish_Date: "Välj Wish Datum"
+  Upload_Images: "Ladda upp bilder"
+  Select_Location: "Välj plats"
+  Send_the_list_via_email: "Skicka listan via e-post"
+  Submit: "lämna"
+  Send: "sända"
+  Sign_out: "Logga ut"
+  User_Name: "användarnamn"
+  Your_friends_wish_to_have: "Dina vänner vill ha"
+  Wish_Images: "Wish bilder"
+  Wish_Complition_Date: "Önskar Complition Datum"
+  Actions: "åtgärder"
+  Edit: "redigera"
+  Delete: "bort"
+  User_Name: "användarnamn"
+  Product_Name: "Produktnamn"
+  Your_Wish_Complition_Date: "Din önskan Complition Datum"
+  Location: "läge"
+  Your_wish_Images: "Din önskan bilder"
+  login: "inloggning"
+  Add_Images: lägga till bilder
+
+  errors: &errors
+    format: ! '%{attribute} %{message}'
+    messages:
+     Enter_your_wish: "Ange din önskan"
+     Enter_description_about_your_wish: "Ange beskrivning din önskan"
+     Please_upload_image_of_your_wish: "Ladda upp bild av din önskan"
+
+#  date:
+#    abbr_month_names:
+#      -januari
+#      -februari
+#      -mars
+#      -april
+#      -maj
+#      -juni
+#      -juli
+#      -augusti
+#      -september
+#      -oktober
+#      -november
+#      -december
+#
+
+  

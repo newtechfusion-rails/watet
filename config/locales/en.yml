@@ -1,0 +1,64 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+en:
+#  date:
+#    abbr_month_names:
+#      -January
+#      -February
+#      -March
+#      -April
+#      -May
+#      -June
+#      -July
+#      -August
+#      -September
+#      -October
+#      -November
+#      -December
+#
+#    order:
+#    - :day
+#    - :month
+#    - :year
+#
+#    formats:
+#      default: ! '%d-%m-%Y'
+#      long: ! '%d %B, %Y'
+#      short: ! '%d %b'
+
+  Email: Email
+  Show_Friend_List : Show Friend List
+  GREAT_TO_HAVE:  "GREAT TO HAVE"
+  Name:  "Name"
+  Description:  "Description"
+  Select_Wish_Date:  "Select Wish Date"
+  Upload_Images:  "Upload Images"
+  Select_Location:  "Select Location"
+  Send_the_list_via_email:  "Send the list via email"
+  Submit:  "Submit"
+  Send:  "Send"
+  Sign_out:  "Sign out"
+  User_Name:  "User Name"
+  Your_friends_wish_to_have:  "Your friends wish to have"
+  Wish_Images:  "Wish Images"
+  Wish_Complition_Date:  "Wish Complition Date"
+  Actions:  "Actions"
+  Edit:  "Edit"
+  Delete:  "Delete"
+  User_Name:  "User Name"
+  Product_Name:  "Product Name"
+  Your_Wish_Complition_Date: "Your Wish Complition Date"
+  Location:  "Location"
+  Your_wish_Images:  "Your wish Images"
+  login:  "login"
+
+  errors: &errors
+    format: ! '%{attribute} %{message}'
+    messages:
+     Enter_your_wish:  "Enter your wish"
+     Enter_description_about_your_wish:  "Enter description about your wish"
+     Please_upload_image_of_your_wish:  "Please upload image of your wish"
+
+
+
+

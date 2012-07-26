@@ -1,0 +1,32 @@
+<p style="text-align:right">
+	<%= current_user.name %>
+	<%= link_to "Sign out", :signout %>
+</p>
+ <div class="adminsales">
+    <div id="add-deal-location" >
+<span class="bus_back"><%= link_to 'Back', :controller => 'users', :action => 'show', :id => current_user.id %></span>
+
+<p class="caps"><%= t :Your_friends_wish_to_have%> </p>
+<div id="test-list-category">
+<div class="heading">
+<ul>
+<li class="first"><%=t :Name%></li>
+<li class="middle"><%= t :Wish_Complition_Date%></li>
+</ul>
+</div>
+<ul id="test-list" class="ui-sortable">
+<% @friends_product.each do |p| %>
+
+                    <li id="listItem_">
+		    <div class="listname">
+	            <img width="16" height="16" class="handle" alt="move" src="/images/arrow.png"/>
+                    <%= link_to p.name, {:action => 'product_friend_profile', :controller => "users",:id => p.id} %></div>
+		   <div class="listdate"><%= p.wish_date%></div>
+		   </li>
+<%end%>
+
+</ul>
+
+</div>
+    </div>
+ </div>

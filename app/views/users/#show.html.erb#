@@ -1,0 +1,122 @@
+<script type="text/javascript">
+  function confirmValidate(){
+var Check = confirm("Are you sure you want to delete this?");
+if(Check){
+    return true;
+}else{
+    return false;
+}
+
+}
+</script>
+<script>
+function submit_locale_selection() {
+  var data = "locale[id]=" + $("#locale_id").val();
+  $.ajax({
+    url: "/locale/selection",
+    type: "POST",
+    data: data,
+    cache: false,
+    dataType: "script"
+  });
+  return false;
+}
+</script>
+
+
+
+
+
+
+
+<div class='spread'>  <div class='twshare left'>   <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="funonrails">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>  </div>  <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="" layout="button_count" show_faces="false" width="450" font=""></fb:like> </div>
+
+
+
+
+
+              
+<p style="text-align:right">
+	<%= current_user.name %>
+	<%= link_to "Sign out", :signout %>
+</p>
+
+ <div class="adminsales">
+    <div id="add-deal-location" >
+
+      <form action="#" method="get">
+  <select name="locale" onchange="this.form.submit()">
+    <option value="en">English</option>
+    <option value="rs">Russian</option>
+    <option value="fn">Finnish</option>
+    <option value="sd">Swedish</option>
+    <option value="pl">Polish</option>
+   </select>
+</form>
+       <div style="color:#ee0000;"><%= flash[:notice] %></div>
+
+
+       
+  <!-- <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=293967000701651";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div class="fb-like" data-href="http://www.newtechfusion.com/" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="tahoma"></div>
+  -->     <div class="group"><div class="actions" id="ad-restaurant" >
+<%= button_to 'Add Wish', {:action => 'add_wish', :controller => "users", :id=>session[:user_id] } %></div>
+       </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <p class="caps"><%= t :Your_friends_wish_to_have%> </p>
+
+              <table class="tabledes lft_aln left_aln_rest">
+                        <thead>
+                            <tr>
+
+                                <th><%= t :Name%></th>
+                             <th><%=t :Wish_Complition_Date%></th>
+                             <th><%=t :Actions%></th>
+
+                            </tr>
+
+
+                        </thead>
+                        <tbody>
+                       <% @products.each do |i|  %>
+
+                            <tr class="alt">
+                              <td>  <%#= image_tag  @show_photo.images, :size=> "50x50"%><div class="clear"></div> <%= link_to i.name, {:action => 'profile', :controller => "users",:id => i.id} %></td>
+                                  <td><%=i.wish_date%></td>
+                                  <td> <div class="action group rest-list-act holder">
+                                  <%= link_to 'Edit', {:action => 'edit', :controller => "products", :id => i.id} %>
+                                    <span>/</span>
+                                  <%= link_to "Delete", {:action => 'destroy', :controller => "products",:id => i.id}, :onclick=>" return confirmValidate();"%>
+
+                                  </div>
+                                  </td>
+                            </tr>
+                                    <%end%>
+
+                        </tbody>
+                </table>
+          </div>
+
+
+    </div>
+

@@ -1,0 +1,71 @@
+## YAML Template.
+---
+pl:
+
+  GREAT_TO_HAVE : Dobrze mieć
+  Show_Friend_List : Pokaż listy znajomych
+  Email: e-mail
+  login: login
+  Terms: terminy
+  Privacy: prywatność
+  All_rights_reserved: Wszelkie prawa zastrzeżone
+  copy : skopiować
+  No_more_disappointing_surprises: Brak bardziej rozczarowujące niespodzianek
+  No_more_more_problems_with_what_to_buy_for_your_friends: Nigdy więcej problemów z co kupić dla znajomych
+  Keep_a_list_things_you_would_like_to_have_and_share_it_with_your_mates: Trzymaj kilka rzeczy lista które chcesz mieć i podzielić się nim z kolegami
+  No_additional_registration_required: Brak dodatkowego rejestracja wymagane
+  use_your_facebook_account: korzystać z konta na Facebooku
+  Just: tylko
+  Name:  "nazwa"
+  Description:  "opis"
+  Select_Wish_Date:  "Wybierz Data życzeń"
+  Upload_Images:  "przesłać zdjęcia"
+  Select_Location: "Wybierz miasto"
+  Send_the_list_via_email:  "Wyślij listę e-mailem"
+  Submit:  Prześlij
+  Send:  "wysłać"
+  Sign_out:  "Zarejestruj się"
+  User_Name:  "Nazwa użytkownika"
+  Your_friends_wish_to_have:  "Twoi znajomi chcą mieć"
+  Wish_Images:  "chcą Images"
+  Wish_Complition_Date:  "Chcą Data Complition"
+  Action:  "Akcje"
+  Edit:  "Edytuj"
+  Delete:  "usunąć"
+  User_Name:  "Nazwa użytkownika"
+  Product_Name:  "Nazwa produktu"
+  Your_Wish_Complition_Date: "Twój Data Complition życzeń"
+  Location:  "lokalizacja"
+  Your_wish_Images:  "Twoje obrazy Życzenie"
+  login:  "wylogować"
+  Add_Images: Dodaj zdjęcia
+
+
+  errors: &errors
+    format: ! '%{attribute} %{message}'
+    messages:
+     Enter_your_wish:  "Wpisz swoje życzenia"
+     Enter_description_about_your_wish:  "Wprowadź opis o swoim życzeniu"
+     Please_upload_image_of_your_wish :  "Proszę przesłać obraz z Państwa życzeniem"
+#  date:
+#    abbr_month_names:
+#      -styczeń
+#      -luty
+#      -marzec
+#      -kwiecień
+#      -maj
+#      -czerwiec
+#      -lipiec
+#      -sierpień
+#      -wrzesień
+#      -październik
+#      -listopad
+#      -grudzień
+#
+#
+#  GREAT TO HAVE:  "Dobrze mieć"
+  
+  
+
+
+  

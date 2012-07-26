@@ -1,0 +1,63 @@
+fn:
+  date:
+    abbr_month_names:
+      -tammikuu
+      -helmikuu
+      -maaliskuu
+      -huhtikuu
+      -toukokuu
+      -kesäkuu
+      -heinäkuu
+      -elokuu
+      -syyskuu
+      -lokakuu
+      -marraskuu
+      -joulukuu
+
+
+  Email: Sähköposti
+  Show_Friend_List : Näytä Friend List
+  Contact : yhteys
+  Terms: ehdot
+  Privacy: yksityisyys
+  All_rights_reserved: Kaikki oikeudet pidätetään
+  copy : kopioida
+  login : kirjaudu
+  No_more_disappointing_surprises: Ei enää pettymys yllätyksiä
+  No_more_more_problems_with_what_to_buy_for_your_friends: Ei entistä enemmän ongelmia mitä ostaa ystävillesi
+  Keep_a_list_things_you_would_like_to_have_and_share_it_with_your_mates: Pidä lista asioista haluaisit saada ja jakaa kavereiden kanssa
+  No_additional_registration_required: Никаких дополнительных регистрации
+  use_your_facebook_account: Käytä Facebook-tilisi
+  Just: juuri
+  GREAT_TO_HAVE:  "Hienoa saada"
+  Name:  "nimi"
+  Description:  "kuvaus"
+  Select_Wish_Date:  "Valitse Wish pvm"
+  Upload_Images:  "Lähetä kuva"
+  Select_Location:  "Valitse Paikkakunta"
+  Send_the_list_via_email:  "Lähetä luettelo sähköpostitse"
+  Submit:  "antaa"
+  Send:  "lähettää"
+  Sign_out:  "Kirjaudu ulos"
+  User_Name:  "käyttäjätunnus"
+  Your_friends_wish_to_have:  "Ystäväsi haluaa olla"
+  Wish_Images:  "Toive kuva"
+  Wish_Complition_Date:  "Toive Complition päivämäärä"
+  Actions:  "Toiminnot"
+  Edit:  "muokata"
+  Delete:  "poistaa"
+  User_Name:  "käyttäjätunnus"
+  Product_Name:  "Tuotenimi"
+  Your_Wish_Complition_Date: "sinun toivottaa Complition päiväys"
+  Location:  "sijainti"
+  Your_wish_Images:  "Toiveesi kuva"
+  login:  "kirjaudu"
+  Action: toiminta
+  Add_Images: Lisää kuvia
+
+  errors: &errors
+    format: ! '%{attribute} %{message}'
+    messages:
+     Enter_your_wish:  "Kirjoita toiveesi"
+     Enter_description_about_your_wish:  "Kirjoita kuvaus siitä toiveesi"
+     Please_upload_image_of_your_wish :  "Ole hyvä ja lataa kuva toiveesi"

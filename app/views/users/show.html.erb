@@ -1,0 +1,281 @@
+<script type="text/javascript">
+  function confirmValidate(){
+var Check = confirm("Are you sure you want to delete this?");
+if(Check){
+    return true;
+}else{
+    return false;
+}
+
+}
+</script>
+
+
+<script type="text/javascript">
+function change_rest_type(id){
+
+var children_ids = [];
+
+
+$("div.top").contents().filter(
+
+  function(){
+    if (this.nodeType == 1) { // nodeType 1 => div
+      // reg exp matches div
+        try {
+          children_ids.push(this.id);
+        } catch(e){}
+    }
+  }
+);
+
+// or maybe the more familiar, the non-jquery way
+for(var i = 0 ; i < children_ids.length; i++){
+ $("#"+children_ids[i]).hide();
+}
+$("#"+id).show();
+
+}
+</script>
+
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript">
+var geocoder = new google.maps.Geocoder();
+
+function geocodePosition(pos) {
+  geocoder.geocode({
+    latLng: pos
+  }, function(responses) {
+    if (responses && responses.length > 0) {
+      updateMarkerAddress(responses[0].formatted_address);
+    } else {
+      updateMarkerAddress('Cannot determine address at this location.');
+    }
+  });
+}
+
+function updateMarkerStatus(str) {
+
+}
+
+function updateMarkerPosition(latLng) {
+
+  $("#product_lat").val(latLng.lat());
+  $("#product_lng").val(latLng.lng());
+
+}
+
+function updateMarkerAddress(str) {
+
+}
+
+function initialize() {
+  var latLng = new google.maps.LatLng(50.534, 4.62622);
+  var map = new google.maps.Map(document.getElementById('mapCanvas'), {
+    zoom: 8,
+    center: latLng,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  });
+  var marker = new google.maps.Marker({
+    position: latLng,
+    title: 'Point A',
+    map: map,
+    draggable: true
+  });
+
+  // Update current position info.
+  updateMarkerPosition(latLng);
+  geocodePosition(latLng);
+
+  // Add dragging event listeners.
+  google.maps.event.addListener(marker, 'dragstart', function() {
+    updateMarkerAddress('Dragging...');
+  });
+
+  google.maps.event.addListener(marker, 'drag', function() {
+    updateMarkerStatus('Dragging...');
+    updateMarkerPosition(marker.getPosition());
+  });
+
+  google.maps.event.addListener(marker, 'dragend', function() {
+    updateMarkerStatus('Drag ended');
+    geocodePosition(marker.getPosition());
+  });
+}
+
+// Onload handler to fire off the app.
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+<script type="text/javascript">
+function validate_form(id){
+var product_name=document.getElementById('product_name').value;
+document.getElementById("name").innerHTML="";
+
+var msg='false';
+if(product_name==''){
+msg='true';
+document.getElementById("name").innerHTML="Enter your wish";
+document.getElementById("product_name").focus();
+}
+
+
+if(msg=='false')
+return true;
+else
+return false;
+}
+</script>
+
+<span class="bus_back1">
+<form action="#" method="get">
+  <select name="locale" onchange="this.form.submit()">
+    <option>Select Language</option>
+    <option value="en">English</option>
+    <option value="rs">Russian</option>
+    <option value="fn">Finnish</option>
+    <option value="sd">Swedish</option>
+    <option value="pl">Polish</option>
+   </select>
+</form></span>
+<p style="text-align:right"><%= current_user.name %><%= link_to "Sign out", :signout %></p>
+<div class="adminsales">
+    <div id="add-deal-location" >
+      <div style="color:#ee0000;"><%= flash[:notice] %></div>
+     <div class="actions"><span class="bus_back"><a href="javascript:void(0)" onclick="change_rest_type('add_wish')"> Add Wish</a></span></div>
+<div id="add_wish" style="display: none">
+<h1><%= t :GREAT_TO_HAVE%> <% if current_user.id != @user.id then %> for <%= @user.name %> <% end %></h1>
+
+		<ul>
+			<table style="text-align:left">
+				<% if (current_user.id == @user.id) then %>
+					<tr>
+						<%= form_for([@user, Product.new],:html => {:multipart => true},:html=>{:onSubmit=>"return validate_form(this);"}) do |f| %>
+                                        <label><%= t :Name%></label>
+                                         <div class="clear"></div>
+                                         <span id="name" style="color:#ee0000;"></span>
+                                         <div class="clear"></div>
+							<%= f.text_field :name %>
+                                                       <% begin %>
+
+                                                        <%= f.hidden_field :order_id, :value=>@product_order.order_id%>
+                                                        <% rescue %>
+                                                        <% end %>
+
+
+                                                       <div class="clear"></div>
+                                                        <label><%= t :Description%></label>
+                                                         <div class="clear"></div>
+                                                          <span id="description" style="color:#ee0000;"></span>
+                                                          <div class="clear"></div>
+                                                        <%= f.text_area :descripton  %>
+                                                          <div class="clear"></div>
+                                                          <label><%=t :Select_Wish_Date%></label>
+                                                              <div class="clear"></div>
+                                                              <%= f.date_select :wish_date, :order => [:day, :month, :year]%>
+                                                               <div class="clear"></div>
+                                                             <div class="clonedInput" id="input1">
+
+                                                        <label><%=t :Upload_Images%></label>
+                                                         <div class="clear"></div>
+                                                         <div class="file">
+                                                           <span id="image" style="color:#ee0000;"></span>
+                                                           <div class="clear"></div>
+                                                      <%=f.file_field :images%>
+                                                      <%=f.file_field :images1%>
+                                                      <%=f.file_field :images2%>
+                                                      <%=f.file_field :images3%>
+                                                         </div>
+
+                                                         </div>
+                                                        <div class="clear"></div>
+
+                                                             <label><%=t :Select_Location%></label>
+                                                              <div class="clear"></div>
+                                                         <div class="maps" id="mapCanvas"></div>
+                                                           <%= f.hidden_field :lat, :value=>"" %>
+                                                            <%= f.hidden_field :lng, :value=>"" %>
+                                                          <div class="clear"></div>
+
+							<td class="actions"><%= f.submit "Submit"%></td>
+						<% end %>
+					</tr>
+				<% end %>
+
+				<%= render @user.products.order("created_at DESC") %>
+			</table>
+		</ul>
+</div>
+<pre><div id="info"></div></pre>
+<script type="text/javascript" src="/js/jquery-1.js"></script>
+<script type="text/javascript" src="/js/jquery-ui-personalized-1.js"></script>
+<script type="text/javascript">
+    // When the document is ready set up our sortable with it's inherant function(s)
+    $(document).ready(function() {
+
+        $("#test-list").sortable({
+            handle : '.handle',
+            update : function () {
+            var order = $('#test-list').sortable('serialize');
+                $("#info").load("/products/ordering_list/"+order);
+            }
+        });
+    });
+</script>
+ <p class="caps"><%= t :Your_friends_wish_to_have%> </p>
+<div id="test-list-category">
+<div class="heading">
+<ul>
+<li class="first"><%=t :Name%></li>
+<li class="middle"><%= t :Wish_Complition_Date%></li>
+<li class="last"><%= t :Action %></li>
+</ul>
+</div>
+<ul id="test-list" class="ui-sortable">
+    <% @pro_order.each do |i|  %>
+          <li id="listItem_<%= i.id%>">
+	       <div class="listname">
+	          <img width="16" height="16" class="handle" alt="move" src="/images/arrow.png"/>
+                  <%= link_to i.name, {:action => 'profile', :controller => "users",:id => i.id} %></div>
+		   <div class="listdate"><%= i.wish_date%></div>
+		   <div class="listaction"> <%= link_to "Edit", {:action => 'edit', :controller => "products", :id => i.id} %><span>/</span><%= link_to "Delete", {:action => 'destroy', :controller => "products",:id => i.id}, :onclick=>" return confirmValidate();"%></div>
+           </li>
+    <%end%>
+</ul>
+</div>
+<p class="caps"><h3><b><%= t :Show_Friend_List%></b> </h3> </p>
+<div id="test-list-category">
+    <div class="heading">
+      <ul>
+        <li class="first"><%=t :Name%></li>
+        <li class="last"><%= t :Email %></li>
+      </ul>
+</div>
+<ul id="test-list" class="ui-sortable">
+      <% @friends.each do |f| %>
+             <li id="listItem_">
+               <div class="listname">
+	       <img width="16" height="16" class="handle" alt="move" src="/images/arrow.png"/>
+               <%= link_to f.uname, {:action => 'product_profile', :controller => "users",:id => f.id} %></div>
+               <div class="listdate1"><%= f.uemail%></div>
+            </li>
+      <%end%>
+
+</ul>
+<div class="emailbox">
+  <h3><%=t :Send_the_list_via_email%></h3>
+  <% if current_user.id == @user.id then %>
+			<%= form_tag(sendlist_user_products_path(current_user)) do %>
+                          <div class="clear"></div>
+                        <span id="email" style="color:#ee0000;"></span>
+                       <div class="clear"></div>
+  				<%= text_field_tag(:email) %>
+                        <div class="actions">
+  				<%= submit_tag("Send") %>
+                        </div>
+			<% end %>
+			<br/>
+		<% end %>
+        </div>
+      </div>
+    </div>
+</div>
